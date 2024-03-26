@@ -6,3 +6,8 @@ The Streamlit interface provides a user-friendly platform for uploading images a
 Dataset= "https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces"
 
 Web application interface 
+
+
+https://github.com/MansiBagul/Deepfake-image-detection-using-dense-CNN-Architecture/assets/107260285/32f37b8f-a65f-4c2d-a28a-61597ad6dca4
+
+
