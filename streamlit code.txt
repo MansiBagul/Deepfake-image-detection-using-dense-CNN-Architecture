@@ -1,0 +1,38 @@
+import streamlit as st
+from tensorflow.keras.preprocessing import image
+import numpy as np
+import tensorflow as tf
+
+# Load the saved model
+model = tf.keras.models.load_model('best_model.h5')  # Provide the path to your HDF5 model file
+
+# Define class labels
+class_labels = {0: "real", 1: "fake"}  # Assuming 0 is real and 1 is fake
+
+def predict_image_label(image_file):
+    img = image.load_img(image_file, target_size=(224, 224))  # Resize the image to match model input size
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+    img_array = img_array / 255.0  # Normalize pixel values
+
+    # Make prediction
+    prediction = model.predict(img_array)
+    predicted_label = np.round(prediction)[0][0]
+    predicted_class = class_labels[predicted_label]
+    return predicted_class
+
+# Streamlit App
+st.title('DeepFake Image Detection')
+st.write('Upload an image for classification.')
+
+uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+
+if uploaded_file is not None:
+    st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
+    st.write("")
+    st.write("Classifying...")
+
+    # Make prediction
+    predicted_class = predict_image_label(uploaded_file)
+
+    st.write(f"Prediction: {predicted_class}")
