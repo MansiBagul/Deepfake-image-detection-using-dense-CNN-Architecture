@@ -4,3 +4,5 @@ This project utilizes state-of-the-art deep learning techniques to detect deepfa
 The Streamlit interface provides a user-friendly platform for uploading images and receiving instant authenticity feedback, enhancing accessibility for users. 
 
 Dataset= "https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces"
+
+Web application interface 
